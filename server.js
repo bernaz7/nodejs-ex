@@ -2,6 +2,8 @@
 var express = require('express'),
     app     = express(),
     morgan  = require('morgan');
+    os = require("os");
+
     
 Object.assign=require('object-assign')
 
@@ -109,6 +111,9 @@ app.get('/pagecount', function (req, res) {
   }
 });
 
+app.get('/hostname', function (req, res) {
+    res.send(os.hostname());
+});
 // error handling
 app.use(function(err, req, res, next){
   console.error(err.stack);
